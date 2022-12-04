@@ -68,7 +68,7 @@ form.addEventListener('submit', function(e){
         .then(function(data)
         {console.log(data)}).catch(error => console.error('Error:', error));
 
-    //getData();
+    getData();
 });
 
 getData();
