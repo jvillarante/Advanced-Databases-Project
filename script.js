@@ -68,5 +68,24 @@ form.addEventListener('submit', function(e){
         .then(function(data)
         {console.log(data)}).catch(error => console.error('Error:', error));
 
-
+    getData();
 });
+
+async function getData() {
+    const response = await fetch('https://csc174-project.herokuapp.com/tableCustomer');
+    console.log(response);
+    const data = await response.json();
+
+    console.log(data);
+    length = data.length;
+    console.log(data);
+    let temp = "";
+    for(i = 0; i < length; i++)
+    {
+        temp += "<tr>";
+        temp += "<td>" + data[i].customerID + "</td>";
+        //temp += "<td>" + data[i].firstName + "</td>";
+    }
+
+    document.getElementById("data").innerHTML=temp;
+}
