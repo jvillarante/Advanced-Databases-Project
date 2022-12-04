@@ -46,17 +46,17 @@ doRequest().then(data => {
 });
 */
 
-var form=document.getElementById('myForm')
+let form=document.getElementById('myForm')
 
 form.addEventListener('submit', function(e){
     e.preventDefault()
 
-    var fName=document.getElementById('fname').value
+    let fName=document.getElementById('fname').value
 
     fetch('https://csc174-project.herokuapp.com/createCustomer', {
         method: 'POST',
         body: JSON.stringify({
-            firstName:fname,
+            firstName:fName,
 
         }),
         headers: {
