@@ -20,6 +20,7 @@ public class CustomerController {
 
     @GetMapping("/selectCustomer")
     public String selectCustomer(@RequestParam String customerID) {
+
         return customerDAO.selectCustomer(customerID);
     }
 }

@@ -47,6 +47,8 @@ public class CustomerDAO {
         String password = "16e062b8cc6601f501d1b62aee13c758540331c093d7074f424bc687b6bf5351";
         String query = "SELECT * FROM store";
 
+        String data = "";
+
         try {
             Class.forName("org.postgresql.Driver");
         } catch (ClassNotFoundException e) {
@@ -54,13 +56,32 @@ public class CustomerDAO {
         }
         try {
             Connection conn = DriverManager.getConnection(url, username, password);
+
+            /*
             PreparedStatement statement = conn.prepareStatement("SELECT *  FROM customer WHERE (first = ?)");
             statement.setString(1, selectCustomer);
             var customers = statement.executeUpdate();
+             */
+
+            Statement statement = conn.createStatement();
+            ResultSet result = statement.executeQuery("select * from customer");
+
+
+            while (result.next())
+            {
+                data = "";
+
+                for (int i = 1; i < 8; i++)
+                {
+                    data += result.getString(i) + ":";
+                }
+                System.out.println(data);
+            }
+
             conn.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return "Selection successful";
+        return "Selection successful\n" + data;
     }
 }
