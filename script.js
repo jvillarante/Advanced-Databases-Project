@@ -50,7 +50,7 @@ let form=document.getElementById('myForm')
 
 form.addEventListener('submit', function(e){
     e.preventDefault()
-    getData()
+    getData();
 
     let fName=document.getElementById('fname').value
 
