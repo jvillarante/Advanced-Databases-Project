@@ -71,8 +71,6 @@ form.addEventListener('submit', function(e){
     getData();
 });
 
-getData();
-
 async function getData() {
     const response = await fetch('https://csc174-project.herokuapp.com/tableCustomer');
     console.log(response);
