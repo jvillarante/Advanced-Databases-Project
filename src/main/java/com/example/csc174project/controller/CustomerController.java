@@ -18,7 +18,7 @@ public class CustomerController {
     }
 
     @GetMapping("/selectCustomer")
-    public String insertCustomer(@RequestParam String customerID) {
+    public String selectCustomer(@RequestParam String customerID) {
         return customerDAO.selectCustomer(customerID);
     }
 }
