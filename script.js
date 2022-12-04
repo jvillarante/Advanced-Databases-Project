@@ -84,7 +84,12 @@ async function getData() {
     {
         temp += "<tr>";
         temp += "<td>" + data[i].customerID + "</td>";
-        //temp += "<td>" + data[i].firstName + "</td>";
+        temp += "<td>" + data[i].firstName + "</td>";
+        temp += "<td>" + data[i].lastName + "</td>";
+        temp += "<td>" + data[i].state + "</td>";
+        temp += "<td>" + data[i].city + "</td>";
+        temp += "<td>" + data[i].zipCode + "</td>";
+        temp += "<td>" + data[i].street + "</td>";
     }
 
     document.getElementById("data").innerHTML=temp;
