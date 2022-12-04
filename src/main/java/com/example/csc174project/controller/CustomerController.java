@@ -5,6 +5,9 @@ import com.example.csc174project.entity.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @RestController
 @CrossOrigin(origins = {"https://gleeful-profiterole-1a83ad.netlify.app/"})
 
@@ -20,7 +23,11 @@ public class CustomerController {
 
     @GetMapping("/selectCustomer")
     public String selectCustomer(@RequestParam String customerID) {
-
         return customerDAO.selectCustomer(customerID);
+    }
+
+    @GetMapping("/tableCustomer")
+    public List<String> tableCustomer() {
+        return customerDAO.customerTable();
     }
 }
