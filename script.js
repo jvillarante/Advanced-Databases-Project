@@ -68,8 +68,10 @@ form.addEventListener('submit', function(e){
         .then(function(data)
         {console.log(data)}).catch(error => console.error('Error:', error));
 
-    getData();
+    //getData();
 });
+
+getData();
 
 async function getData() {
     const response = await fetch('https://csc174-project.herokuapp.com/tableCustomer');
