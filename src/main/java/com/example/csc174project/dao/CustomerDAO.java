@@ -87,9 +87,9 @@ public class CustomerDAO {
         return "Selection successful\n" + data;
     }
 
-    public List<String> customerTable() {
-        List<String> customers = new ArrayList<>();
-        String data = "";
+    public List<Customer> customerTable() {
+        List<Customer> customers = new ArrayList<>();
+        // String data = "";
 
         String url = "jdbc:postgresql://ec2-3-92-98-129.compute-1.amazonaws.com:5432/d2kcc4it2iou00";
         String username = "urcyphloccxygf";
@@ -102,13 +102,20 @@ public class CustomerDAO {
             ResultSet result = statement.executeQuery("select * from customer");
 
             while (result.next()) {
-                data = "";
+                // data = "";
 
-                for (int i = 1; i < 8; i++)
-                {
-                    data += result.getString(i) + ":";
-                }
-                customers.add(data);
+                // data += result.getString(i) + ":";
+                Customer customer = new Customer();
+
+                customer.setCustomerID(result.getString(1));
+                customer.setFirstName(result.getString(2));
+                customer.setLastName(result.getString(3));
+                customer.setState(result.getString(4));
+                customer.setCity(result.getString(5));
+                customer.setZipCode(result.getString(6));
+                customer.setStreet(result.getString(7));
+
+                customers.add(customer);
             }
 
         } catch (SQLException e) {

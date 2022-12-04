@@ -27,7 +27,7 @@ public class CustomerController {
     }
 
     @GetMapping("/tableCustomer")
-    public List<String> tableCustomer() {
+    public List<Customer> tableCustomer() {
         return customerDAO.customerTable();
     }
 }
