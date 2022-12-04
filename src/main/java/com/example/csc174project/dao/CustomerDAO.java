@@ -11,9 +11,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class CustomerDAO {
     /**
-     * This method will be in charge of opening a connection to our database. Insert values in the corresponding
-     * fields. Once the values have been inserted the connection will be closed and a message will be returned
-     * to let the user know that the insertion was successful.
+     * This method is in charge of inserting the value into the database. It receives a customer as a parameter, and
+     * inserts the name.
      *
      * @param customer entity
      * @return String
@@ -23,7 +22,6 @@ public class CustomerDAO {
         String url = "jdbc:postgresql://ec2-3-92-98-129.compute-1.amazonaws.com:5432/d2kcc4it2iou00";
         String username = "urcyphloccxygf";
         String password = "16e062b8cc6601f501d1b62aee13c758540331c093d7074f424bc687b6bf5351";
-        String query = "SELECT * FROM store";
 
         try {
             Class.forName("org.postgresql.Driver");
@@ -42,69 +40,27 @@ public class CustomerDAO {
         return "Query insertion Successful";
     }
 
-    public String selectCustomer(String selectCustomer) {
-        //Credentials of our database ?
-        String url = "jdbc:postgresql://ec2-3-92-98-129.compute-1.amazonaws.com:5432/d2kcc4it2iou00";
-        String username = "urcyphloccxygf";
-        String password = "16e062b8cc6601f501d1b62aee13c758540331c093d7074f424bc687b6bf5351";
-        String query = "SELECT * FROM store";
-
-        String data = "";
-
-        try {
-            Class.forName("org.postgresql.Driver");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        try {
-            Connection conn = DriverManager.getConnection(url, username, password);
-
-            /*
-            PreparedStatement statement = conn.prepareStatement("SELECT *  FROM customer WHERE (first = ?)");
-            statement.setString(1, selectCustomer);
-            var customers = statement.executeUpdate();
-             */
-
-            Statement statement = conn.createStatement();
-            ResultSet result = statement.executeQuery("select * from customer");
-
-
-            while (result.next())
-            {
-                data = "";
-
-                for (int i = 1; i < 8; i++)
-                {
-                    data += result.getString(i) + ":";
-                }
-                System.out.println(data);
-            }
-
-            conn.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return "Selection successful\n" + data;
-    }
-
+    /**
+     * This method returns a list of all the customers in the customer table.
+     * @return
+     */
     public List<Customer> customerTable() {
         List<Customer> customers = new ArrayList<>();
-        // String data = "";
 
         String url = "jdbc:postgresql://ec2-3-92-98-129.compute-1.amazonaws.com:5432/d2kcc4it2iou00";
         String username = "urcyphloccxygf";
         String password = "16e062b8cc6601f501d1b62aee13c758540331c093d7074f424bc687b6bf5351";
 
         try {
+            // connect to the database
             Connection conn = DriverManager.getConnection(url, username, password);
 
+            // executes the query to retrieve the customers from the table using a result set.
             Statement statement = conn.createStatement();
             ResultSet result = statement.executeQuery("select * from customer");
 
+            // iterate over the result set. Creates a customer object, and adds it to the list.
             while (result.next()) {
-                // data = "";
-
-                // data += result.getString(i) + ":";
                 Customer customer = new Customer();
 
                 customer.setCustomerID(result.getString(1));

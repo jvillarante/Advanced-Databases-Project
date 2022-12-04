@@ -16,16 +16,13 @@ public class CustomerController {
     @Autowired
     private CustomerDAO customerDAO;
 
+    //handles POST requests to insert value from the frontend
     @PostMapping("/createCustomer")
     public String insertCustomer(@RequestBody Customer customer) {
         return customerDAO.insertCustomer(customer);
     }
 
-    @GetMapping("/selectCustomer")
-    public String selectCustomer(@RequestParam String customerID) {
-        return customerDAO.selectCustomer(customerID);
-    }
-
+    //handles GET requests to display values from the customer table in the frontend
     @GetMapping("/tableCustomer")
     public List<Customer> tableCustomer() {
         return customerDAO.customerTable();
