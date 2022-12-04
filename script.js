@@ -1,4 +1,4 @@
-fetch('https://csc174-project.herokuapp.com/createCustomer',{
+/*fetch('https://csc174-project.herokuapp.com/createCustomer',{
     method: 'POST',
     headers: {
         'Content-Type': 'application/json'
@@ -11,7 +11,9 @@ fetch('https://csc174-project.herokuapp.com/createCustomer',{
 })
     .then(data => console.log(data))
     .catch(error => console.log('ERROR'))
+ */
 
+/*
 async function doRequest() {
 
     let url = 'https://csc174-project.herokuapp.com/createCustomer';
@@ -28,11 +30,11 @@ async function doRequest() {
 
     if (res.ok) {
 
-        // let text = await res.text();
-        // return text;
+        let text = await res.text();
+        return text;
 
-        let ret = await res.json();
-        return JSON.parse(ret.data);
+        //let ret = await res.json();
+        //return JSON.parse(ret.data);
 
     } else {
         return `HTTP error: ${res.status}`;
@@ -41,4 +43,33 @@ async function doRequest() {
 
 doRequest().then(data => {
     console.log(data);
+});
+*/
+
+var form=document.getElementById('myForm')
+
+form.addEventListener('submit', function(e){
+    e.preventDefault()
+
+    var fName=document.getElementById('fname').value
+
+    fetch('https://csc174-project.herokuapp.com/createCustomer', {
+        method: 'POST',
+        body: JSON.stringify({
+            firstName:fname,
+
+        }),
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+        }
+    })
+        .then(function(response){
+            return response.json()})
+        .then(function(data)
+        {console.log(data)
+            title=document.getElementById("title")
+            body=document.getElementById("bd")
+            title.innerHTML = data.title
+            body.innerHTML = data.body
+        }).catch(error => console.error('Error:', error));
 });
