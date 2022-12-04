@@ -7,8 +7,14 @@ request.addEventListener('readystatechange', () => {
     }
 });
 
-request.open('GET', ' https://csc174-project.herokuapp.com/selectCustomer');
-request.send();
+let fName = document.getElementById('fname').value;
+
+let submitButton = document.getElementById("submitButton");
+submitButton.addEventListener("click", (fName)=>{
+    request.open('GET', 'https://csc174-project.herokuapp.com/selectCustomer?customerID=' + fName);
+    request.send();
+});
+
 
 request.open('POST', ' https://csc174-project.herokuapp.com/createCustomer');
 request.send();

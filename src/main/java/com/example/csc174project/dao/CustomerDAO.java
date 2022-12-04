@@ -54,7 +54,7 @@ public class CustomerDAO {
         }
         try {
             Connection conn = DriverManager.getConnection(url, username, password);
-            PreparedStatement statement = conn.prepareStatement("SELECT FROM customer WHERE (cid = ?)");
+            PreparedStatement statement = conn.prepareStatement("SELECT first  FROM customer WHERE (first = ?)");
             statement.setString(1, selectCustomer);
             var customers = statement.executeUpdate();
             conn.close();
