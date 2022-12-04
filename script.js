@@ -83,13 +83,13 @@ async function getData() {
     for(i = 0; i < length; i++)
     {
         temp += "<tr>";
-        temp += "<td>" + data[i].customerID + "</td>";
-        temp += "<td>" + data[i].firstName + "</td>";
-        temp += "<td>" + data[i].lastName + "</td>";
-        temp += "<td>" + data[i].state + "</td>";
-        temp += "<td>" + data[i].city + "</td>";
-        temp += "<td>" + data[i].zipCode + "</td>";
-        temp += "<td>" + data[i].street + "</td>";
+        temp += "<td>" + data[i].customerID + "\t</td>";
+        temp += "<td>" + data[i].firstName + "\t</td>";
+        temp += "<td>" + data[i].lastName + "\t</td>";
+        temp += "<td>" + data[i].state + "\t</td>";
+        temp += "<td>" + data[i].city + "\t</td>";
+        temp += "<td>" + data[i].zipCode + "\t</td>";
+        temp += "<td>" + data[i].street + "\t</td>";
     }
 
     document.getElementById("data").innerHTML=temp;
