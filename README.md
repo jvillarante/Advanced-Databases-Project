@@ -6,5 +6,5 @@ src/test/java/com/example/csc174project/Csc174ProjectApplicationTests.java
 
 ## Contributors  
 Josiah Villarante  
-Jorge Villavicencio 
+Jorge Villavicencio  
 Quintilian Huynh
