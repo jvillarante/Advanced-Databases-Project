@@ -66,10 +66,5 @@ form.addEventListener('submit', function(e){
         .then(function(response){
             return response.json()})
         .then(function(data)
-        {console.log(data)
-            title=document.getElementById("title")
-            body=document.getElementById("bd")
-            title.innerHTML = data.title
-            body.innerHTML = data.body
-        }).catch(error => console.error('Error:', error));
+        {console.log(data)}).catch(error => console.error('Error:', error));
 });
